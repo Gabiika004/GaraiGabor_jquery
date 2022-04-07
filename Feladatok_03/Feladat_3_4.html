@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat_3_3_jQuery</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="row jumbotron">
+                <div class="col-12 text-center">
+                    <h1><b>Panaszfelvétel</b></h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 text-center">
+                <h2>Kérem, adja meg a dokumentum hitelesítéséhez szükséges adatokat!</h2>
+            </div>
+
+        </div>   
+
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <form action="#" class="row g-4" id="panasz">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" placeholder="Teljes Név" id="nev">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="email" class="form-control" placeholder="E-mail cím" id="email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="password" class="form-control" placeholder="Ügyfél azonosító:" id="id">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="tel" class="form-control" placeholder="Telefonszám:" id="tel">
+                    </div>
+                    <div class="form-group col-md-12 text-center">
+                        <p><b>Panasz típusa:</b></p>
+                    </div>
+                    <div class="form-group col-md-12 text-center">
+                        <label class="form-label radio" for="alkalmazott">Alkalmazott: <input type="radio" class="form-control tipus" value="Alkalmazott"></label>
+                        <label class="form-label radio" for="vezetoseg">Vezetőség: <input type="radio" class="form-control tipus" value="Vezetőség"></label>
+                        <label class="form-label radio" for="kornyezet">Környezet: <input type="radio" class="form-control tipus" value="Környezet"></label>
+                    </div>
+                    <div class="form-group col-md-12 text-center">
+                        <p><b>Szolgáltatások, amiket igénybe vett:</b></p>
+                    </div>
+                    <div class="form-group col-md-12 text-center">
+                        <label class="form-label checkbox" for="karbantartas">Karbantartás: <input type="checkbox" class="form-control service" id="karbantartas" name="service" value="Karbantartás"></label>
+                        <label class="form-label checkbox" for="szereles">Szerelés: <input type="checkbox" class="form-control service" id="szereles" name="service" value="Szerelés"></label>
+                        <label class="form-label checkbox" for="takaritas">Takarítás: <input type="checkbox" class="form-control service" id="takaritas" name="service" value="Takarítás"></label>
+                        <label  class="form-label checkbox" for="telefon">Telefon: <input type="checkbox" class="form-control service" id="telefon" name="service" value="Telefon"></label>
+                        <label  class="form-label checkbox" for="internet">Internet: <input type="checkbox" class="form-control service" id="szallitas" name="service" value="Internet"></label>
+                    </div>
+                  
+                    <div class="form-group col-md-12">
+                        <input type="text" class="form-control" placeholder="Tárgy" id="object">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Üzenet"></textarea>
+                    </div>
+                    <div class="text-center col-md-12">
+                        <button class="btn btn-success" type="button" id="submit" onclick="Panasz()">Felvétel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script>
+
+        function Panasz(){
+
+            let nev = $('#nev').val();
+            let id = $('#id').val();
+            let email = $('#email').val();
+            let tel = $('#tel').val();
+            let tipus = $('.tipus').val();
+            const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
+
+            let services = $('.service');
+            let object = $('#object').val();
+            let message = $('#message').val();
+            let servicesKivalasztott = [];
+    
+            // For ciklus a feltétekhez
+
+            for (let index = 0; index < services.length; index++) {
+                    const element = services[index];
+                    if ($(element).is(":checked")) {
+                        servicesKivalasztott.push($(element).val());
+                    }
+                }
+
+            let minden_kitoltve = true;
+            if (nev === '' ) {
+                minden_kitoltve = false;
+                alert('A név kitöltése kötelező!')
+            }
+            if (id === '') {
+                minden_kitoltve = false;
+                alert('Az azonosító megadása kötelező!')
+            }
+            if (email === '') {
+                minden_kitoltve = false;
+                alert('Az email kitöltése kötelező!')
+            }
+            if (tel === "" ) {
+                minden_kitoltve = false;
+                alert('A telefonszám megadása kötelező!')
+            }
+            if (tipus === "") {
+                minden_kitoltve = false;
+                alert('A probléma típusának megadása kötelező!')
+            }
+            if (object === "") {
+                minden_kitoltve = false;
+                alert('A tárgy megadása kötelező!')
+            }
+            if (message === "") {
+                minden_kitoltve = false;
+                alert('Üres üzenetet nem lehet beküldeni!')
+            }
+            
+            if(email.search("@") && email.search(".")){
+                minden_kitoltve = false;
+                alert('Nem megfelelő az e-mail cím!')
+            }
+
+            if (minden_kitoltve == true){
+
+                let felhasznalo = {
+                    nev: nev,
+                    id: id,
+                    email: email,
+                    tel: tel,
+                    tipus: tipus,
+                    services: servicesKivalasztott,
+                    object: object,
+                    message: message
+                }
+
+                console.log(felhasznalo)
+            };
+        }
+
+    </script>
+
+</body>
+</html>

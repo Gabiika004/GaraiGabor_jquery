@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat_2_2_jQuery</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+<body>
+    
+    <h1>Számítsuk ki együtt egy téglalap kerületét és területét!</h1>
+    <h3>Add meg a téglalap oldalainak hosszát (cm)!</h3>
+    <label style="margin: 20px;" for="a">a = <input id="a" type="number"> cm</label> <br>
+    <label style="margin: 20px;" for="b">b = <input id="b" type="number"> cm</label>
+    <button onclick="KiIr()" style="margin: 10px; padding: 10px; font-size: 18px;">Számít</button> <br>
+    <strong><p id="text"></p></strong>
+
+    <script>
+        
+        function KiIr(){
+
+            let K = 2 * $("#a").val() + $("#b").val();
+            let T = $("#a").val() * $("#b").val(); 
+
+            $('#text').html ("Kerület: " + Math.round(K * 100) / 100 + "cm2    " +
+            "Terület: " + Math.round(T * 100) / 100 + " cm2");
+        }
+
+    </script>
+</body>
+</html>

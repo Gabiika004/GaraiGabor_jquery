@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat_3_3_jQuery</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mt-2">
+
+                
+
+        <table class="table table-hover ">
+            <tr>
+                <td colspan="2">
+                    <h1>Adja meg az adatait a regisztrálához:</h1>
+                </td>
+            </tr>
+            <tr>
+                <td><label class="form-check-label" for="nev"><h4>Felhasználónév:</h4></label></td>
+                <td><input type="text" id="nev" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+                
+            </tr>
+            <tr>
+                <td><label class="form-check-label" for="jelszo"><h4>Jelszó:</h4></label></td>
+                <td><input type="password" id="jelszo" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+            </tr>
+            <tr>
+                <td><label class="form-check-label" for="jelszo2"><h4>Jelszó megerősítése:</h4></label></td>
+                <td><input type="password" id="jelszo2" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+            </tr>
+            <tr>
+                <td><label class="form-check-label" for="email"><h4>E-mail cím:</h4></label></td>
+                <td><input type="email" id="email" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+            </tr>
+            <tr>
+                <td><label class="form-check-label" for="date"><h4>Születési dátum::</h4></label></td>
+                <td><input type="date" id="date" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+            </tr>
+        </table>
+
+        <button class="btn btn-success col-4" type="button" id="Regist" onclick="Jelszo()">Regisztral</button>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function Jelszo(){
+
+        // Regisztrációs adatok 
+        let nev = $('#nev').val();
+        let pass = $('#jelszo').val();
+        let pass2 = $('#jelszo2').val();
+        let email = $('#email').val();
+        let born = $('#date').val();
+        const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
+        let minden_kitoltve = true;
+        if (nev === '' ) {
+            minden_kitoltve = false;
+            alert('A név kitöltése kötelező!')
+        }
+        if (pass === '') {
+            minden_kitoltve = false;
+            alert('A jelszó megadása kötelező!')
+        }
+        if (pass2 === '') {
+            minden_kitoltve = false;
+            alert('A jelszó megerősítése kötelező!')
+        }
+        if (email === '') {
+            minden_kitoltve = false;
+            alert('Az email kitöltése kötelező!')
+        }
+        if (born === '') {
+            minden_kitoltve = false;
+            alert('A születési dátum megadása kötelező!')
+        }
+
+        if (pass != pass2){
+            minden_kitoltve = false;
+            alert('A jelszavak nem egyeznek!')
+        }
+         
+        if (pass.length < 5 && pass.length < 16) {
+            minden_kitoltve = false;
+            alert("A jelszónak legalább 5 karakterből kell állnia!")
+        }
+        else if (pass.search(/[a-z]/) < 0) {
+            minden_kitoltve = false;
+            alert("A jelszónak tartalmaznia kell kisbetűt!")
+        } 
+        else if(pass.search(/[A-Z]/) < 0) {
+            minden_kitoltve = false;
+            alert("A jelszónak tartalmaznia kell nagybetűt!")
+        } 
+        else if (pass.search(/[0-9]/) < 0) {
+            minden_kitoltve = false;
+            alert("A jelszónak tartalmaznia kell számot!")
+        } 
+        else if (specialChars.test(pass) == false) {
+            minden_kitoltve = false;
+            alert("A jelszónak tartalmaznia kell speciális karaktert!")
+        } 
+        if(email.search("@") && email.search(".")){
+            minden_kitoltve = false;
+            alert('Nem megfelelő az e-mail cím!')
+        }
+
+        if (minden_kitoltve == true){
+
+            let felhasznalo = {
+                nev: nev,
+                pass: pass,
+                pass2: "ugyan az",
+                email: email,
+                born: born,
+              }
+
+              console.log(felhasznalo)
+        };
+    };
+
+    </script>
+    
+</body>
+</html>

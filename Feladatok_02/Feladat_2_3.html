@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat_2_3_jQuery</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+</head>
+<body>
+
+    <h1>Számítsuk ki együtt egy háromszög kerületét és területét!</h1>
+    <h3>Add meg a háromszög oldalainak hosszát (cm)!</h3>
+    <label style="margin: 10px;" for="a">a = <input style="margin: 10px;" id="a" type="number"> cm</label> <br>
+    <label style="margin: 10px;" for="b">b = <input style="margin: 10px;" id="b" type="number"> cm</label> <br>
+    <label style="margin: 10px;" for="c">c = <input style="margin: 10px;" id="c" type="number"> cm</label>
+    <button onclick="KiIr()" style="margin: 10px; padding: 10px; font-size: 17px;">Számít</button> <br>
+    <strong><p id="text"></p></strong>
+
+    <script>
+
+        function KiIr(){
+
+            let K = $('#a').val() + $("#b").val() + $("#c").val();
+            let s = K/2;
+            let T = Math.sqrt(s * (s - $("#a").val())) * (s - $("#b").val()) * (s - $("#c").val());
+
+            $('#text').html("Kerület: " + Math.round(K * 100) / 100 + "cm2    " +
+                            "Terület: " + Math.round(T * 100) / 100 + " cm2");
+        }
+
+    </script>
+    
+</body>
+</html>

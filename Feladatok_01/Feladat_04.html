@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script>
+        function Change(){
+        const text = $("#input").val();
+        $("#text").html(text);
+        }
+    </script>
+    <title>Feladat_04_jQuery</title>
+</head>
+<body>
+    <h1 tyle="margin-bottom: 30px;">
+        Hozz létre egy oldalt egy bekezdéssel és egy beviteli mezővel. <br>
+        Ha a beviteli mezőbe beképelünk valamit akkor a bekezdésben is jelenjen meg az a szöveg.<br>
+        (A beviteli mezőben lévő értéket annak 'value' tulajdonságával tudja lekérdezni.)
+    </h1>
+
+    <p style="font-weight: bold; font-size: 25px;">Itt jelennek meg a begépelt szövegek: <br></p>
+
+    <p id="text">
+
+    </p>
+
+    <input id="input" onkeydown="Change()"
+    style="padding: 15px; width: 650px; margin: 15px; 
+    font-weight: bold; font-size: 50px;" type="text">
+    
+</body>
+</html>

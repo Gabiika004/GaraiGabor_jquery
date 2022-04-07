@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat_01_jQuery</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script>
+        function Change() {
+            $("#button").html("Sikerült!");
+            $("#button").css("background-color","green");
+        }
+        function ChangeBack(){
+            $("#button").html("Húzd ide az egeret!");
+            $("#button").css("background-color","yellow");
+        }
+    </script>
+</head>
+<body>
+    <h1 style="margin-bottom: 30px;">Hozz létre egy gombot, melynek felirata "Húzd ide az egeret" legyen. <br>
+        Ha a gombra ráhúzzuk az egeret akkor a gomb felirata "Sikerült" legyen.
+    </h1>
+    <button id="button" onmouseover="Change()" onmouseout="ChangeBack()"
+            style="font-size: 30px; font-weight: bold; background-color: yellow; padding: 30px; border-radius: 40%;">
+            Húzd ide az egeret!
+    </button>
+
+</body>
+</html>

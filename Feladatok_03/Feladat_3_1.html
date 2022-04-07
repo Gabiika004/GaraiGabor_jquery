@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat_3_1_jQuery</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+</head>
+<body>
+    <h1>Kis- vagy nagybetűs szöveg</h1>
+    
+    <form id='feladat1' action="#">
+
+        <label for="text" style="margin: 10px;">Szöveg: <input style="margin: 10px;" type="text" name="text" id="text"> </label> 
+        <button id="alakit" type="button" style="margin: 10px;" onclick="Alakit()">Alakít</button> <br>
+        <label for="lower" style="margin: 10px;">Kisbetű: <input style="margin: 10px;" type="radio" name="radio" value="lower" id="lower"></label> <br>
+        <label for="upper" style="margin: 10px;">Nagybetű: <input style="margin: 10px;" type="radio" name="radio" value="upper" id="upper"></label> <br>
+        
+    </form>
+
+
+    <script>
+        function Alakit(){
+            
+        if(text === ''){
+            alert("A szöveg rész kitöltése kötelező!")
+        }
+        else if ($("#lower").is(":checked")){
+            alert(text.toLowerCase())
+        }
+        else if ($("#upper").is(":checked")){
+            alert(text.toUpperCase())
+        }
+        else{
+            alert("Válassza ki, hogy kis- vagy nagybetűs legyen a szöveg!")
+        }
+        }
+    </script>
+</body>
+</html>

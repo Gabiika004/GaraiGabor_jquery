@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat_2_1_jQuery</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+</head>
+<body>
+    <h1>Játszunk! Gondoltam egy számra, eltalálod?</h1>
+    <label for="tipp"><strong>Tippelj: </strong><input id="tipp" type="text"></label>
+    <button onclick="Check()">Mehet</button>
+    <button onclick="randomNumb(1,100)">Következő</button>
+    <strong><p id="text"></p></strong>
+
+    <script>
+
+        let Number1 = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+
+        function randomNumb(min,max){
+
+            Number1 = Math.floor(Math.random() * (max - min + 1) + min);
+
+        }
+
+        function Check(){
+            let Number2 = $('#tipp').val();
+            if (Number2 > Number1){
+                $('#text').html('Ennél kisebb számra gondoltam!');
+            }
+            else if (Number2 < Number1){
+                $('#text').html('Ennél nagyobb számra gondoltam!');
+            }
+            else{
+                $('#text').html('Kitűnő, eltaláltad, a szám valóban ') + Number1 + ' volt.';
+            }
+        }
+
+    </script>
+</body>
+</html>

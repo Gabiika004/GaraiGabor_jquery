@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat_2_4_jQuery</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+</head>
+<body>
+
+    <h1>Játszunk! Mondjon egy számot 1 és 7 között és megmondom a hét melyik napjának felel meg.</h1>
+    <label for="tipp"><strong>Tippelj: </strong><input id="tipp" type="text"></label>
+    <button onclick="KiIr()">Mehet</button>
+    <strong><p id="text"></p></strong>
+
+    <script>
+        const napok = ["Hétfő","Kedd","Szerda","Csütörtök","Péntek","Szombat","Vasárnap"];
+
+        function KiIr(){
+            let day = $('#tipp').val();
+            if (1 <= day & day <=7){
+                $('#text').html(day + ". nap a hétből: " + napok[day - 1]);
+            }
+            else{
+                $('#text').html("Nem megfelelő számot adott meg!");
+            }
+        }
+    </script>
+    
+</body>
+</html>

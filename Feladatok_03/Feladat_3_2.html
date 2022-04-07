@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat_3_2_jQuery</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="/Feladatok_03/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mt-4">
+
+                
+        <table class="table table-hover">
+            <tr>
+                <th class="table-primary" colspan="2"><h1 >Adja meg a pizza rendeléséhez szükséges információkat!</h1></th>
+            </tr>
+            <tr>
+                <th class="table-success" colspan="2"><h3>A megrendelő adatai:</h3></th>
+            </tr>
+            <tr class="table-info">
+                <td><label class="form-check-label" for="Tnev"><h4>Teljes név:</h4></label></td>
+                <td><input type="text" id="Tnev" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+            </tr>
+            <tr class="table-info">
+                <td><label class="form-check-label" for="telSz"><h4>Telefonszám:</h4></label></td>
+                <td><input type="text" id="telSz" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+            </tr>
+            <tr class="table-info">
+                <td><label for="iranyitoSz"><h4>Irányítószám:</h4></label></td>
+                <td><input type="text" id="iranyitoSz" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+            </tr>
+            <tr class="table-info">
+                <td><label for="varosN"><h4>Város:</h4></label></td>
+                <td><input type="text" id="varosN" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+            </tr>
+            <tr class="table-info">
+                <td><label for="utcaN"><h4>Utca:</h4></label></td>
+                <td><input type="text" id="utcaN" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+            </tr>
+            <tr class="table-info">
+                <td><label for="hazSz"><h4>Házszám:</h4></label></td>
+                <td><input type="text" id="hazSz" class="form-control" aria-label="Large" onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')"></td>
+            </tr>
+            
+            
+        </table>
+
+        <h3 class="m-4">Milyen legyen a pizza?</h3>
+
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="alap">
+            <option selected value="0">Alap:</option>
+            <option value="1">Paradicsomos</option>
+            <option value="2">Tejfölös</option>
+            <option value="3">Sajtszószos</option>
+            <option value="4">Barbecue szószos</option>
+          </select>
+
+        
+          
+            <h4 class="m-2">Feltétek:</h4> 
+        
+            <input type="checkbox" class="feltetek btn-check" id="sonka" autocomplete="on" value="sonka">
+            <label class="btn btn-outline-success" for="sonka">Sonka</label>
+
+            <input type="checkbox" class="feltetek btn-check" id="csirkemell" autocomplete="on" value="csirkemell">
+            <label class="btn btn-outline-success" for="csirkemell">Csirkemell</label>
+
+            <input type="checkbox" class="feltetek btn-check" id="bacon" autocomplete="on" value="bacon">
+            <label class="btn btn-outline-success" for="bacon">Bacon:</label>
+
+            <input type="checkbox" class="feltetek btn-check" id="kukorica" autocomplete="on" value="kukorica">
+            <label class="btn btn-outline-success" for="kukorica">Kukorica:</label>
+            
+            <input type="checkbox" class="feltetek btn-check" id="FustoltSajt" autocomplete="off" value="FustoltSajt">
+            <label class="btn btn-outline-success" for="FustoltSajt">Füstölt Sajt:</label>
+
+            <input type="checkbox" class="feltetek btn-check" id="Paprika" autocomplete="off" value="Paprika">
+            <label class="btn btn-outline-success" for="Paprika">Paprika:</label>
+
+            <input type="checkbox" class="feltetek btn-check" id="Ananasz" autocomplete="off" value="Ananasz">
+            <label class="btn btn-outline-success" for="Ananasz">Ananász:</label>
+            
+            <input type="checkbox" class="feltetek btn-check" id="Szalami" autocomplete="off" value="Szalami">
+            <label class="btn btn-outline-success" for="Szalami">Szalámi:</label>
+          
+
+   
+
+        <h3 class="m-2">Egyéb:</h3>
+            <input class="form-control " aria-label="Large"  placeholder="Bátran írjon!"
+            onblur="$(this).css('color', 'black')" onfocus="$(this).css('color', 'green')" 
+            style="padding: 10px;" type="text" id="other"></label>
+
+        <button class="btn btn-outline-success m-3 col-3" id="order" type="button" onclick="Pizza()">Felvétel</button>
+
+            </div>
+        </div>
+    </div>
+    
+
+<script>
+
+        function Pizza(){
+
+                // Megrendelő adatai
+                let nev = $('#Tnev').val();
+                let tel = $('#telSz').val();
+                let iranyito = $('#iranyitoSz').val();
+                let varos = $('#varosN').val();
+                let utca = $('#utcaN').val();
+                let haz = $('#hazSz').val();
+
+                // Pizza adatok
+                let alap = $('#alap').val();
+                let feltetek = $('.feltetek');
+                let other = $('#other').val();
+                let feltetekKivalasztott = [];
+
+                // For ciklus a feltétekhez
+
+                for (let index = 0; index < feltetek.length; index++) {
+                    const element = feltetek[index];
+                    if ($(element).is(":checked")) {
+                        feltetekKivalasztott.push($(element).val());
+                    }
+                }
+
+                // Kitöltött mezők
+
+                let minden_kitoltve = true;
+                if (nev === '' ) {
+                    minden_kitoltve = false;
+                    alert('A név kitöltése kötelező!')
+                }
+                if (tel === '' ) {
+                    minden_kitoltve = false;
+                    alert('A telefonszám kitöltése kötelező!')
+                }
+                if (iranyito === '') {
+                    minden_kitoltve = false;
+                    alert('Az irányítószám megadása kötelező!')
+                }
+                if (varos === '') {
+                    minden_kitoltve = false;
+                    alert('A város kitöltése kötelező!')
+                }
+                if (utca === '') {
+                    minden_kitoltve = false;
+                    alert('Az utca kitöltése kötelező!')
+                }
+                if (haz === '') {
+                    minden_kitoltve = false;
+                    alert('A házszám megadása kötelező!')
+                }
+                if (feltetek < 2) {
+                    minden_kitoltve = false;
+                    alert('Válasszon ki legalább 2 feltétet!')
+                }
+
+                if (minden_kitoltve == true){
+
+                    let order = {
+                        nev: nev,
+                        tel: tel,
+                        iranyito: iranyito,
+                        varos: varos,
+                        utca: utca,
+                        haz: haz,
+                        alap: alap,
+                        feltetek: feltetekKivalasztott,
+                        other: other
+                    }
+
+                    console.log(order)
+                };
+                
+            }
+
+</script>
+
+
+
+</body>
+</html>
